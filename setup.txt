@@ -1,0 +1,4 @@
+1. Cài python: https://www.python.org/downloads/
+2. Cài visual code: https://code.visualstudio.com/docs/?dv=win64user
+3. Cài git: https://git-scm.com/downloads/win
+   Link git: git clone https://github.com/ptha93/main.git
