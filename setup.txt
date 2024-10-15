@@ -4,4 +4,34 @@
    Link git: git clone https://github.com/ptha93/main.git
    Add path: C:\Program Files\Git\bin\
              C:\Program Files\Git\cmd\
-4. Cài Airflowgit remote add origingit 
+4.      Cài Docker & Airflow & Postgres & Airbyte
+   Step 1: Vào Turn windows features on or off tích 2 features: Hyper-V và Windows subsystem for linux
+           Cài docker: https://docs.docker.com/desktop/install/windows-install/
+   Step 2: Tải file docker-compose.yaml: https://airflow.apache.org/docs/apache-airflow/2.10.2/docker-compose.yaml
+   Step 3: Tạo file .env trong folder chứa file docker-compose.yaml với nội dung:
+           AIRFLOW_IMAGE_NAME=apache/airflow:2.10.2
+           AIRFLOW_UID=50000
+   Step 4: Mở visual code trong terminal chạy lệnh: cd "đường dẫn đến folder chứa file docker-compose.yaml"
+   Step 5: Chạy tiếp lệnh: docker-compose up -d
+   Step 6: Thêm config port cho postgres trong file docker-compose.yaml mục services --> postgres:
+           ports:
+            - 5432:5432
+   Step 7: chạy câu lệnh trong terminal:
+           docker-compose up -d --no-deps --build postgres
+   Step 8: Tải dbeaver: https://dbeaver.io/download/
+   Step 9: Connect postgres: 
+           Host: localhost
+           Database: postgres
+           Port: 5432
+           Authentication: Database Native
+           Username: airflow
+           Password: airflow
+   Step 10: Tải abctl: https://github.com/airbytehq/abctl/releases/tag/v0.18.1
+   Step 11: Tạo folder abctl và giải nén
+   Step 12: Mở visual code trong terminal chạy lệnh: cd "đường dẫn đến folder abctl" 
+   Step 13: Trong terminal chạy câu lênh: abctl version
+   Step 14: Trong terminal chạy câu lênh: abctl local install
+   Step 15: Trong terminal chạy câu lênh: abctl local credentials
+   Step 16: Rename email và pass đăng nhâp airbyte
+            abctl local credentials --email user@company.example
+            abctl local credentials --password new_password
